@@ -1,0 +1,258 @@
+body {
+	background-color : #ffffdd;
+	margin : 50px;
+	margin-left:150px;
+	font-family : verdana, tahoma, arial;
+	font-size : 12px;
+	color : #333;
+    width : 80%;
+}
+input:-moz-read-only { /* For Firefox */
+    background-color: #DDDAAA;
+}
+
+input:read-only {
+    background-color:  #DDDAAA;
+}
+select[disabled] { background-color: #DDDAAA; }
+table#all{
+    width : 100%;
+    background-color : #fefefe;
+    border : 6px solid orange;
+}
+table{
+    width : 99%;
+    background-color : #fdfdfd;
+    border : 1px solid #555;
+}
+table th{
+    width : 99%;
+    background-color : #dddccc;
+    color : #555;
+    font-weight : bold;
+    font-size : 11px;
+    text-align:right;
+    
+    width:auto;
+    border : 1px solid #555;
+}
+table td{
+    width : 99%;
+    background-color : #ffffdd;
+    color : #333;
+    font-weight : bold;
+    font-size : 11px;
+    text-align:left;
+    width:auto;
+    border : 1px solid #555;
+}
+input{
+    font-size : 11px;
+    color : #333;
+    padding:3px;
+    border : 1px solid #555;
+    margin : 1px;
+}
+select{
+    font-size : 11px;
+    color : #333;
+    padding:3px;
+    border : 1px solid #555;
+    margin : 1px;
+}
+input:button{
+    font-size : 11px;
+    color : #030303;
+    background-color : #333;
+    padding:3px;
+    border : 1px solid #555;
+    margin : 1px;
+}
+td.header{
+    
+    text-align : center;
+    background-color : #999599;
+    color : #fffdff;
+    border : 3px solid orange;
+    font-size : 25px;
+    width : 100%;
+    height : 150px;
+    padding-top : 30px;
+}
+td.footer{
+    
+    text-align : center;
+    background-color : #333933;
+    color : #ffddff;
+    border : 3px solid orange;
+    font-size : 25px;
+    width : 100%;
+    height : 70px;
+    padding-top : 5px;
+}
+
+td.menu{
+    text-align : center;
+    background-color : #999599;
+    color : #ffddff;
+    border : 3px solid orange;
+    font-size : 25px;
+    width : 250px;
+    height : auto;
+    padding-top : 5px;
+    padding-left : 10px;
+    vertical-align : top;
+}
+td.content{
+    padding : 5px;
+    width : 950px;
+}
+a.menu:link{
+	text-decoration:none;
+	color : white;
+	background-color : #cccaaa;
+	display : block;
+	width : 250px;
+	height : 20px;
+	padding : 3px;
+	font-size:12px;
+	border : 1px solid #444;
+	border-radius : 6px;
+        margin:1px;
+}
+a.menu:visited{
+	text-decoration:none;
+	color : white;
+	background-color : #cccaaa;
+	display : block;
+	width : 250px;
+	height : 20px;
+	padding : 3px;
+	font-size:12px;
+	border : 1px solid #444;
+	border-radius : 6px;
+        margin:1px;
+}
+a.menu:hover{
+	text-decoration:none;
+	color : black;
+	background-color : #eeebbb;
+	display : block;
+	width : 250px;
+	height : 20px;
+	padding : 3px;
+	font-size:12px;
+	border : 1px solid #444;
+	border-radius : 6px;
+        margin:1px;
+}
+a.menu:active{
+	text-decoration:none;
+	color : red;
+	background-color : #ccccaa;
+        height : 25px;
+	display : block;
+	width : 250px;
+	padding : 3px;
+	font-size:12px;
+	border : 1px solid #444;
+	border-radius : 6px;
+        margin:1px;
+}
+
+a.resultset:link{
+	text-decoration:none;
+	color : white;
+	background-color : #cccaaa;
+	display : block;
+	width : 80%;
+	height : 20px;
+	padding : 3px;
+	font-size:12px;
+	border : 1px solid #444;
+	border-radius : 6px;
+        margin:1px;
+}
+a.resultset:visited{
+	text-decoration:none;
+	color : white;
+	background-color : #cccaaa;
+	display : block;
+	width : 80%;
+	height : 20px;
+	padding : 3px;
+	font-size:12px;
+	border : 1px solid #444;
+	border-radius : 6px;
+        margin:1px;
+}
+a.resultset:hover{
+	text-decoration:none;
+	color : black;
+	background-color : #eeebbb;
+	display : block;
+	width : 80%;
+	height : 20px;
+	padding : 3px;
+	font-size:12px;
+	border : 1px solid #444;
+	border-radius : 6px;
+        margin:1px;
+}
+a.resultset:active{
+	text-decoration:none;
+	color : red;
+	background-color : #ccccaa;
+        height : 25px;
+	display : block;
+	width : 80%;
+	padding : 3px;
+	font-size:12px;
+	border : 1px solid #444;
+	border-radius : 6px;
+        margin:1px;
+}
+
+
+
+.active{
+    color : red;
+    font-weight : bolder;
+}
+            ul.tab {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    overflow: hidden;
+                    border: 1px solid #ccc;
+                    background-color: #f1f1f1;
+            }
+
+            /* Float the list items side by side */
+            ul.tab li {float: left;}
+
+            /* Style the links inside the list items */
+            ul.tab li a {
+                    display: inline-block;
+                    color: #444;
+                    text-align: center;
+                    padding: 10px 10px;
+                    text-decoration: none;
+                    transition: 0.3s;
+                    font-size: 14px;
+            }
+
+            /* Change background color of links on hover */
+            ul.tab li a:hover {background-color: #ddd;}
+
+            /* Create an active/current tablink class */
+            ul.tab li a:focus, .active {background-color: #ccc;}
+
+            /* Style the tab content */
+            .tabcontent {
+                    display: none;
+                    padding: 6px 6px;
+                    border: 1px solid #ccc;
+                    border-top: none;
+            }
+            
