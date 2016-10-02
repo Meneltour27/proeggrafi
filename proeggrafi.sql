@@ -19,7 +19,11 @@ SET time_zone = "+00:00";
 --
 -- Βάση δεδομένων: `proeggrafi`
 --
-
+DROP DATABASE IF EXISTS proeggrafi;
+CREATE DATABASE IF NOT EXISTS proeggrafi
+	DEFAULT CHARACTER SET utf8
+	DEFAULT COLLATE utf8_general_ci;
+use proeggrafi;
 -- --------------------------------------------------------
 
 --
@@ -450,41 +454,13 @@ INSERT INTO `thriskies` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Δομή πίνακα για τον πίνακα `uschools`
---
-
-CREATE TABLE IF NOT EXISTS `uschools` (
-  `id` int(11) NOT NULL,
-  `sname` varchar(100) NOT NULL,
-  `uid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Άδειασμα δεδομένων του πίνακα `uschools`
---
-
-INSERT INTO `uschools` (`id`, `sname`, `uid`) VALUES
-(550, 'ΤΜΗΜΑ ΝΟΣΗΛΕΥΤΙΚΗΣ', 190),
-(551, 'ΤΜΗΜΑ ΦΙΛΟΛΟΓΙΑΣ', 189),
-(554, 'ΤΜΗΜΑ ΟΙΚΟΝΟΜΙΚΩΝ ΕΠΙΣΤΗΜΩΝ', 361),
-(555, 'ΤΜΗΜΑ ΙΣΤΟΡΙΑΣ, ΑΡΧΑΙΟΛΟΓΙΑΣ ΚΑΙ ΔΙΑΧΕΙΡΙΣΗΣ ΠΟΛΙΤΙΣΜΙΚΩΝ ΑΓΑΘΩΝ', 104),
-(556, 'ΤΜΗΜΑ ΚΟΙΝΩΝΙΚΗΣ ΚΑΙ ΕΚΠΑΙΔΕΥΤΙΚΗΣ ΠΟΛΙΤΙΚΗΣ', 187),
-(557, 'ΤΜΗΜΑ ΘΕΑΤΡΙΚΩΝ ΣΠΟΥΔΩΝ', 362),
-(558, 'ΤΜΗΜΑ ΟΡΓΑΝΩΣΗΣ ΚΑΙ ΔΙΑΧΕΙΡΙΣΗΣ ΑΘΛΗΤΙΣΜΟΥ', 400),
-(559, 'ΤΜΗΜΑ ΠΟΛΙΤΙΚΗΣ ΕΠΙΣΤΗΜΗΣ ΚΑΙ ΔΙΕΘΝΩΝ ΣΧΕΣΕΩΝ', 411),
-(560, 'TMHMA ΠΛΗΡΟΦΟΡΙΚΗΣ ΚΑΙ ΤΗΛΕΠΙΚΟΙΝΩΝΙΩΝ', 98);
-
--- --------------------------------------------------------
-
-
-
---
 -- Δομή πίνακα για τον πίνακα `userinfo`
 --
 
 CREATE TABLE IF NOT EXISTS `userinfo` (
-  `sc_ardeltiou` varchar(50) NOT NULL,
-  `arxika` char(4) NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `sc_ardeltiou` varchar(50) NOT NULL UNIQUE,
+  `arxika` char(4),
   `last` varchar(30) NOT NULL,
   `first` varchar(30) NOT NULL,
   `department_ID` varchar(5) NOT NULL,
@@ -543,31 +519,38 @@ CREATE TABLE IF NOT EXISTS `userinfo` (
   `catID` int(11) DEFAULT NULL,
   `in_exam_ID` int(11) DEFAULT NULL,
   `in_period_ID` int(11) DEFAULT NULL,
-  PRIMARY KEY (`sc_ardeltiou`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Δομή πίνακα για τον πίνακα `useradditionalinfo`
---
-
-CREATE TABLE IF NOT EXISTS `useradditionalinfo` (
-  `eid` int not null auto_increment,
-  `code` varchar(50) NOT NULL,
   `school_name` varchar(100) DEFAULT NULL,
   `school_type` varchar(10) DEFAULT NULL,
   `orientation` int(11) DEFAULT NULL,
   `pref` int(11) DEFAULT NULL,
-  `school_code` int(11) NOT NULL,
   `sc_name` varchar(100) NOT NULL,
   `sc_code` int(11) NOT NULL,
   `amav` double NOT NULL,
   `gvp` double NOT NULL,
-  PRIMARY KEY(eid),
-  FOREIGN KEY (code) REFERENCES userinfo(sc_ardeltiou)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+DELIMITER //
+CREATE TRIGGER `tr_in_create_arxika` BEFORE INSERT ON `userinfo`
+ FOR EACH ROW BEGIN
+SET NEW.arxika=concat(
+    LEFT(NEW.first, 1), 
+    LEFT(NEW.last,1), 
+    LEFT(NEW.fname,1), 
+    LEFT(NEW.mname,1));
+END
+//
+CREATE TRIGGER `tr_up_create_arxika` BEFORE UPDATE ON `userinfo`
+ FOR EACH ROW BEGIN
+SET NEW.arxika=concat(
+    LEFT(NEW.first, 1), 
+    LEFT(NEW.last,1), 
+    LEFT(NEW.fname,1), 
+    LEFT(NEW.mname,1));
+END
+//
 
+DELIMITER ;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -13,10 +13,10 @@
 	
 	<script>
 		  $( function() {
-			$( "#id_date" ).datepicker({
+			$( "#IDdate" ).datepicker({
 				dateFormat : "dd/mm/yy"
 			});
-			$( "#fulldob" ).datepicker({
+			$( "#birthdate" ).datepicker({
 				dateFormat : "dd/mm/yy"
 			});
 			$( "#in_date" ).datepicker({
